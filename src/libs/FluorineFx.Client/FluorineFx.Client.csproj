@@ -1,12 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net4.6.2;net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net4.6.2;net4.7.2;net4.8.1;net6.0;net7.0;net8.0</TargetFrameworks>
     <DefineConstants>$(DefineConstants);FXCLIENT</DefineConstants>
     <Logging>false</Logging>
     <DefineConstants Condition="'$(Logging)'">$(DefineConstants);LOGGING</DefineConstants>
     <NoWarn Condition=" '$(Logging)' == 'false' ">$(NoWarn);CS0168</NoWarn>
     <NoWarn>$(NoWarn);SYSLIB0003</NoWarn>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Label="Nuget">
@@ -58,5 +59,13 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
   </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net4.7.2' ">
+        <Reference Include="System.Web" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net4.8.1' ">
+        <Reference Include="System.Web" />
+    </ItemGroup>
 
 </Project>
